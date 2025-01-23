@@ -1,0 +1,173 @@
+% Base font size as 10pt
+\documentclass[10pt]{article}
+
+% T1 font encoding for better output of accented characters
+\usepackage[T1]{fontenc}
+
+% Language
+\usepackage[portuguese,main=english]{babel}
+
+% Libertine font for the thesis body
+\usepackage{libertine}
+\usepackage[libertine]{newtxmath}
+
+% Helvetica font for the first pages
+% Note: This is not the true Helvetica, you should buy it in order to use it, Helvetica is not free
+\usepackage{tgheros}
+
+% Monospace font (Inconsolata pairs well with Libertine)
+\usepackage{inconsolata}
+
+% Font commands
+\newcommand{\monofont}{\fontfamily{zi4}\selectfont}
+
+% Configure verbatim to use monospace font
+\makeatletter
+\renewcommand{\verbatim@font}{\monofont}
+\makeatother
+
+% Essential packages
+\usepackage[utf8]{inputenc} % UTF-8 input encoding for special characters
+\usepackage{graphicx}       % Support for including images
+\usepackage{amsmath}        % Enhanced math formatting
+\usepackage{amssymb}        % Additional mathematical symbols
+\usepackage{array}          % Extended array and tabular environments
+\usepackage{xcolor}         % Color support and management
+\usepackage{tikz}           % Drawing diagrams and graphics
+\usepackage{fancyhdr}       % Custom header and footer control
+\usepackage{lipsum}         % Lorem ipsum text for testing
+\usepackage{indentfirst}    % Indent first paragraph in sections
+\usepackage{microtype}      % Micro-typographic enhancements
+\usepackage{subcaption}     % Support for subfigures and subtables
+\usepackage{float}          % Improved interface for floating objects
+\usepackage{physics}        % For better physics notation
+\usepackage{siunitx}        % For SI units
+\usepackage{csquotes}       % For better quotations and references
+
+% A4 page size
+\usepackage[a4paper]{geometry}
+
+% Hyperlinks configuration
+\usepackage[hidelinks]{hyperref}
+\definecolor{urlblue}{RGB}{0,82,147}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,      % Internal links
+    citecolor=black,      % Citations
+    filecolor=black,      % File links
+    urlcolor=urlblue,     % External URLs
+    linktoc=all,          % ToC links
+    breaklinks=true       % Allow line breaks in links
+}
+
+% Verbatim spacing
+\usepackage{etoolbox}
+
+\appto{\endverbatim}{\vspace{-1\baselineskip}}
+
+% Bibliography
+\usepackage[backend=bibtex,sorting=none,style=ieee,url=false,sortcites=true,compress=true]{biblatex}
+\addbibresource{references.bib}
+
+% Standard page style definition
+\fancypagestyle{thesis}{
+    \fancyhf{} % clear all header and footer fields
+    \fancyfoot[R]{\thepage} % page number in right footer (this is free choice)
+    \renewcommand{\headrulewidth}{0pt} % no line in header
+}
+
+% Border control (useful only when creating the template)
+\newif\ifshowborders
+%\showborderstrue  % Comment this line and uncomment next line to hide borders
+\showbordersfalse
+\newcommand{\conditionalfbox}[1]{%
+    \ifshowborders
+        \fbox{#1}%
+    \else
+        #1%
+    \fi
+}
+
+% Acronym index
+\usepackage[acronym,automake,style=long]{glossaries-extra}
+\makeglossaries
+\newglossarystyle{dotted}{%
+  \setglossarystyle{list}% base style
+  \renewcommand*{\glossentry}[2]{%
+    \item[\glsentryitem{##1}%
+      \glstarget{##1}{\glossentryname{##1}}]
+    \glossentrydesc{##1}\dotfill ##2}
+}
+\setglossarystyle{dotted}
+\renewcommand\glossarysection[2][]{\section*{#1}}
+\newacronym{example1}{EXAMPLE1}{This is an example}
+\newacronym{example2}{EXAMPLE2}{This is another example}
+
+% Define all scientific area colors
+\definecolor{artscomm}{RGB}{193,175,229}
+\definecolor{sciences}{RGB}{113,214,224}
+\definecolor{education}{RGB}{255,110,0}
+\definecolor{accounting1}{RGB}{0,82,147}
+\definecolor{accounting2}{RGB}{245,63,91}
+\definecolor{economics}{RGB}{245,63,91}
+\definecolor{engineering}{RGB}{152,50,34}
+\definecolor{languages}{RGB}{0,82,147}
+\definecolor{health}{RGB}{255,218,37}
+
+\colorlet{pantonecolor}{black}  % Change by the corresponding color
+
+\begin{document}
+
+% Margins for first pages
+\newgeometry{left=1.50cm,right=1.50cm,top=0.80cm,bottom=1.00cm}
+% First pages
+\begingroup
+    % First pages in Helvetica
+    \sffamily
+    \input{single_pages/01_Cover}
+    \input{single_pages/02_Title}
+    \input{single_pages/03_Jury}
+    \input{single_pages/04_Acknowledgements}
+    \input{single_pages/05_Abstract_pt}
+    \input{single_pages/06_Abstract_en}
+    \input{single_pages/07_Tools}
+\endgroup
+
+% New margins for main content
+\newgeometry{left=3cm,right=2.5cm,top=3cm,bottom=3cm}
+% Apply style and start numbering
+\pagestyle{thesis}
+\setcounter{page}{1}
+% Main content
+\begingroup
+    % Change font size to 11pt for this group
+    \fontsize{11pt}{13.2pt}\selectfont
+    % Main content in Libertine
+    \libertine
+    \urlstyle{same}
+    
+    % Text settings for better readability
+    \linespread{1.15}
+    \setlength{\parskip}{0.4em} 
+    \setlength{\parindent}{1em}
+    % Table of Contents
+    \clearpage
+    \tableofcontents
+    % List of Figures
+    \clearpage
+    \listoffigures
+    % List of Tables
+    \clearpage
+    \listoftables
+    % List of acronyms
+    \clearpage
+    \printglossary[type=\acronymtype,title=List of Acronyms]
+    % Thesis content
+    \input{sections/01_About_and_Instructions}
+    \input{sections/02_Example}
+    % Print bibliography
+    \clearpage
+    \printbibliography[title=References]
+\endgroup
+
+\end{document}

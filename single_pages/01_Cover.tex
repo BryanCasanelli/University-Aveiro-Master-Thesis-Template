@@ -1,0 +1,79 @@
+\clearpage
+{
+\thispagestyle{empty}
+\setlength{\fboxsep}{0pt}
+\setlength{\parskip}{0pt}
+\setlength{\parindent}{0pt}
+\setlength{\baselineskip}{0pt}
+\setlength{\lineskip}{0pt}
+\noindent\vbox{%
+    \begin{tikzpicture}[remember picture, overlay]
+        \path[fill=pantonecolor] (current page.north east) rectangle ++(-13.89cm,-0.5cm);
+    \end{tikzpicture}
+    % Row 1 - 5cm
+    \begin{minipage}[t]{0.313\textwidth}
+        \conditionalfbox{\vbox to 5cm{\hbox to \linewidth{%
+            \parbox[t]{\linewidth}{%
+                \vspace{3pt}
+                \hfill
+                \includegraphics[height=1.35cm,width=1.25cm]{img/logo.pdf}
+                \hspace{0pt}
+                \vspace{-100pt}
+        }}}}
+    \end{minipage}%
+    \begin{minipage}[t]{0.222\textwidth}
+        \conditionalfbox{\vbox to 5cm{\hbox to \linewidth{%
+            \parbox[t]{\linewidth}{%
+                \vspace{3pt}
+                \textbf{Universidade de Aveiro} \\
+                \textbf{YEAR}
+                \vspace{-100pt}
+            }}}}
+    \end{minipage}%
+    \begin{minipage}[t]{0.464\textwidth}
+        \conditionalfbox{\vbox to 5cm{\hbox to \linewidth{}}}
+    \end{minipage}
+
+    % Row 2 - 3.01cm
+    \begin{minipage}[t]{0.313\textwidth}
+    \conditionalfbox{\vbox to 3.01cm{\hbox to \linewidth{%
+    \parbox[t]{\linewidth}{%
+            \vspace{3pt}
+            \fontsize{14}{14}\selectfont
+            \textbf{Author's} \\
+            \textbf{Full name}
+            \vspace{-100pt}
+    }}}}
+\end{minipage}%
+    \begin{minipage}[t]{0.686\textwidth}
+        \conditionalfbox{\vbox to 3.01cm{\hbox to \linewidth{%
+    \parbox[t]{\linewidth}{%
+            \vspace{3pt}
+            \fontsize{14}{14}\selectfont
+            \textbf{DISSERTATION TITLE (MAX 130 CHARACTERS)} \\
+           \fontsize{11}{14}\selectfont
+           \textbf{(Mandatory in Portuguese; may be added another Language)}
+            \vspace{-100pt}
+    }}}}
+    \end{minipage}
+
+    % Row 3 - 14.25cm
+    \begin{minipage}[t]{0.313\textwidth}
+        \conditionalfbox{\vbox to 14.25cm{\hbox to \linewidth{}}}
+    \end{minipage}%
+    \begin{minipage}[t]{0.686\textwidth}
+        \conditionalfbox{\vbox to 14.25cm{\hbox to \linewidth{}}}
+    \end{minipage}
+
+    % Row 4 - 4.73cm
+    \begin{minipage}[t]{0.313\textwidth}
+        \conditionalfbox{\vbox to 4.73cm{\hbox to \linewidth{}}}
+    \end{minipage}%
+    \begin{minipage}[t]{0.343\textwidth}
+        \conditionalfbox{\vbox to 4.73cm{\hbox to \linewidth{}}}
+    \end{minipage}%
+    \begin{minipage}[t]{0.343\textwidth}
+        \conditionalfbox{\vbox to 4.73cm{\hbox to \linewidth{}}}
+    \end{minipage}
+}
+}

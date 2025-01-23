@@ -1,0 +1,76 @@
+\clearpage
+{
+\thispagestyle{empty}
+\setlength{\fboxsep}{0pt}
+\setlength{\parskip}{0pt}
+\setlength{\parindent}{0pt}
+\setlength{\baselineskip}{0pt}
+\setlength{\lineskip}{0pt}
+\noindent\vbox{%
+    % First row - 5cm
+    \begin{minipage}[t]{5.69cm}
+        \conditionalfbox{\vbox to 5cm{\hbox to \linewidth{}}}
+    \end{minipage}%
+    \begin{minipage}[t]{12.43cm}
+        \conditionalfbox{\vbox to 5cm{\hbox to \linewidth{}}}
+    \end{minipage}
+
+    % Second row - 2.47cm
+    \begin{minipage}[t]{5.69cm}
+        \conditionalfbox{\vbox to 2.47cm{\hbox to \linewidth{}}}
+    \end{minipage}%
+    \begin{minipage}[t]{12.43cm}
+        \conditionalfbox{\vbox to 2.47cm{\hbox to \linewidth{}}}
+    \end{minipage}
+
+    % Third row - 2.47cm
+    \begin{minipage}[t]{5.69cm}
+        \conditionalfbox{\vbox to 2.47cm{\hbox to \linewidth{%
+    \parbox[t]{\linewidth}{%
+            \vspace{-8pt}
+            \begin{flushleft}
+            \fontsize{11}{11}\selectfont\textbf{Palavras-chave}
+            \\
+            \textbf{(Portuguese is mandatory)}
+            \end{flushleft}
+            \vspace{-100pt}
+    }}}}
+    \end{minipage}%
+    \begin{minipage}[t]{12.43cm}
+        \conditionalfbox{\vbox to 2.47cm{\hbox to \linewidth{%
+    \parbox[t]{\linewidth}{%
+            \vspace{-8pt}
+            \begin{flushleft}
+            Text
+            \end{flushleft}
+            \vspace{-100pt}
+    }}}}
+    \end{minipage}
+
+    % Fourth row - 16.23cm
+    \begin{minipage}[t]{5.69cm}
+        \conditionalfbox{\vbox to 16.23cm{\hbox to \linewidth{%
+    \parbox[t]{\linewidth}{%
+            \vspace{-8pt}
+            \begin{flushleft}
+            \fontsize{11}{11}\selectfont\textbf{Resumo}
+            \\
+            \textbf{(Portuguese is mandatory)}
+            \end{flushleft}
+            \vspace{-100pt}
+    }}}}
+    \end{minipage}%
+    \begin{minipage}[t]{12.43cm}
+        \conditionalfbox{\vbox to 16.23cm{\hbox to \linewidth{%
+    \parbox[t]{\linewidth}{%
+            \vspace{-8pt}
+            \begin{flushleft}
+            {\selectlanguage{portuguese}
+            Text
+            }
+            \end{flushleft}
+            \vspace{-100pt}
+    }}}}
+    \end{minipage}
+}
+}
