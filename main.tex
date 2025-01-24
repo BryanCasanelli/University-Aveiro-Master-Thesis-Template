@@ -60,6 +60,26 @@
     breaklinks=true       % Allow line breaks in links
 }
 
+% Format sections
+\usepackage{titlesec}
+\titleformat{\section}[block]
+  {\normalfont\huge\centering\libertineSB}
+  {\thesection}
+  {1em}
+  {}
+  [\titlerule]
+\titlespacing*{\section}
+  {0pt}
+  {0pt}
+  {1\baselineskip}
+
+% Format subsections
+\titleformat{\subsection}[block]
+  {\normalfont\Large\libertineSB}
+  {\thesubsection}
+  {1em}
+  {}
+
 % Verbatim spacing
 \usepackage{etoolbox}
 
