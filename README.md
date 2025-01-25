@@ -7,17 +7,17 @@ This LaTeX version was implemented in January 2025, based on the university's of
 Following the original template specifications:
 
 * Paper size: A4
-* First pages margins (as specified in the original template):
+* First pages margins:
   * Left: 1.50cm
   * Right: 1.50cm
   * Top: 0.80cm
   * Bottom: 1.00cm
-* Main content margins (according to official requirements):
+* Main content margins:
   * Left: 3cm
   * Right: 2.5cm
   * Top: 3cm
   * Bottom: 3cm
-* Page numbers are positioned at the bottom right of each page (free choice)
+* Page numbers are positioned at the bottom right of each page
 
 ## Directory Structure
 
@@ -33,6 +33,7 @@ thesis/
 |-- img/               # Images folder
 |-- sections/          # Content sections
 |-- single_pages/      # Initial pages
+|-- acronyms.tex      # Acronyms definitions
 |-- main.tex          # Main document
 +-- references.bib    # Bibliography
 ```
@@ -47,22 +48,45 @@ The template uses the following free fonts:
 
 ## Adding Content
 
-To add abstracts and keywords:
+### Abstracts and Keywords
 
-1. Edit the corresponding files in the `abstract/` directory:
+1. Edit the corresponding files in `abstract/`:
    * `abstract_en.tex` for English abstract
    * `abstract_pt.tex` for Portuguese abstract
    * `keywords_en.tex` for English keywords
    * `keywords_pt.tex` for Portuguese keywords
 
-To add new sections to your thesis:
+### New Sections
 
-1. Create a new .tex file in the `sections/` directory
-2. Add it to the main document using:
+1. Create a new .tex file in `sections/`
+2. Add it using:
    ```
    \input{sections/your_file}
    ```
-   under the `% Thesis content` comment
+
+### Acronyms
+
+1. Open `acronyms.tex`
+2. Add new entries using:
+   ```
+   \newacronym{abc}{ABC}{Acronym Basic Component}
+   ```
+3. Use in text with `\gls{acronym}` for first use (expands to full form)
+4. Subsequent uses with `\gls{acronym}` will show only the short form
+
+### Bibliography
+
+1. Open `references.bib`
+2. Add entries in BibTeX format:
+   ```
+   @article{reference-key,
+       author  = {Author Name},
+       title   = {Title},
+       journal = {Journal},
+       year    = {2024},
+   }
+   ```
+3. Cite in text using `\cite{reference-key}`, `\textcite{reference-key}`, or `\parencite{reference-key}`
 
 ## Features
 
