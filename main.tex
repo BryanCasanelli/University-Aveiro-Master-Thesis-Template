@@ -116,7 +116,7 @@
 }
 
 % Acronym index
-\usepackage[acronym,automake,style=long]{glossaries-extra}
+\usepackage[acronym,automake]{glossaries-extra}
 \setabbreviationstyle[acronym]{short-long}
 \makeglossaries
 \newglossarystyle{dotted}{%
@@ -129,6 +129,22 @@
 \setglossarystyle{dotted}
 \renewcommand\glossarysection[2][]{\section*{#1}}
 \input{acronyms}
+\newcommand{\longshort}[1]{%
+    \setabbreviationstyle[acronym]{long-short}%
+    \gls{#1}%
+}
+\newcommand{\shortlong}[1]{%
+    \setabbreviationstyle[acronym]{short-long}%
+    \gls{#1}%
+}
+\newcommand{\forcelongshort}[1]{%
+    \glsunset{#1}%
+    \glsxtrlong{#1} (\glsxtrshort{#1})%
+}
+\newcommand{\forceshortlong}[1]{%
+    \glsunset{#1}%
+    \glsxtrshort{#1} (\glsxtrlong{#1})%
+}
 
 % Define all scientific area colors
 \definecolor{artscomm}{RGB}{193,175,229}
@@ -141,7 +157,7 @@
 \definecolor{languages}{RGB}{0,82,147}
 \definecolor{health}{RGB}{255,218,37}
 
-\colorlet{pantonecolor}{black}  % Change by the corresponding color
+\colorlet{pantonecolor}{engineering}  % Change by the corresponding color
 
 \begin{document}
 

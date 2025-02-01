@@ -75,11 +75,19 @@ The template uses the following free fonts:
     \begin{verbatim}
     \newacronym{abc}{ABC}{Acronym Basic Component}
     \end{verbatim}
-    \item Use in text with \verb|\gls{acronym}| for first use (expands to full form).
-    \item Subsequent uses with \verb|\gls{acronym}| will show only the short form.
+    \item While the traditional \verb|\gls{acronym}| command is available, this template provides several enhanced commands for better flexibility:
+    \begin{itemize}
+        \item \verb|\longshort{acronym}| displays the full form followed by the abbreviation in parentheses. After first use, only shows the full form.
+        \item \verb|\shortlong{acronym}| displays the abbreviation followed by the full form in parentheses. After first use, only shows the abbreviation.
+        \item \verb|\forcelongshort{acronym}| forces the long-short format regardless of previous usage.
+        \item \verb|\forceshortlong{acronym}| forces the short-long format regardless of previous usage.
+    \end{itemize}
+    \item Note that for \verb|\gls|, \verb|\longshort|, and \verb|\shortlong|, the complete form will only be shown on first use. Subsequent uses will display according to their respective styles.
+    \item By default (command \verb|\gls|), the template uses the short-long style (abbreviation followed by full form). This can be modified in \texttt{main.tex} by changing:
+    \begin{verbatim}
+    \setabbreviationstyle[acronym]{short-long}
+    \end{verbatim}
 \end{enumerate}
-
-\newpage
 
 \textbf{To add bibliography entries:}
 \begin{enumerate}
@@ -93,7 +101,7 @@ The template uses the following free fonts:
         year    = {2024},
     }
     \end{verbatim}
-    \item Cite in text using \verb|\cite{reference-key}|, \verb|\textcite{reference-key}|, or \verb|\parencite{reference-key}|.
+    \item While \verb|\cite{key}| is widely used, it is strongly recommended to use \verb|\parencite{key}| instead, as it provides better support for citation styles and formatting.
 \end{enumerate}
 
 \subsection{Features}
