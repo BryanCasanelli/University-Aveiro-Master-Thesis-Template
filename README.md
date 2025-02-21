@@ -93,7 +93,7 @@ The template uses the following free fonts:
        year    = {2024},
    }
    ```
-3. While `\cite{key}` is widely used, it is strongly recommended to use `\parencite{key}` instead, as it provides better support for citation styles and formatting.
+3. To cite in the text, use `\cite{key}`.
 
 ## Features
 
@@ -104,7 +104,7 @@ The template uses the following free fonts:
 * List of acronyms
 
 ### Bibliography Management:
-* Default citation style: IEEE
+* Default citation style: numeric-comp
 * To change the citation style, modify the biblatex style parameter in `main.tex`:
   ```tex
   \usepackage[style=your-style]{biblatex}
