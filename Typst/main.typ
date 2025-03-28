@@ -94,7 +94,7 @@
 // Table of acronyms
 #import "acronyms.typ": *
 #init-acronyms(acronyms)
-#print-index(title: "List of Acronyms")
+#print-index(title: "List of Acronyms", delimiter: "", row-gutter: 5pt, used-only: true)
 #pagebreak()
 
 // Thesis content
