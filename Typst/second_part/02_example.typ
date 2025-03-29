@@ -53,10 +53,8 @@ Tables are useful for presenting structured data. Below is a comparison of diffe
 #figure(
   table(
     columns: (auto, auto, auto, auto),
-    inset: 10pt,
-    align: center,
     // Header row
-    [*Algorithm*], [*Type*], [*Use Case*], [*Complexity*],
+    table.header([*Algorithm*], [*Type*], [*Use Case*], [*Complexity*]),
     // Data rows
     [Random Forest], [Ensemble], [Classification/Regression], [O($n log n$)],
     [SVM], [Kernel Methods], [Classification], [O($n^2$)],

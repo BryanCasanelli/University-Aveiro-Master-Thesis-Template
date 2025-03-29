@@ -49,6 +49,20 @@
   numbering("1.1", counter(heading).get().first(), num.pos().first())
 )
 
+// For tables, place the caption above
+#show figure.where(
+  kind: table
+): set figure.caption(position: top)
+
+// Custom table format
+#set table(
+  align: left,
+  stroke: (_, y) => (
+       top: if y <= 1 { 0.8pt } else { 0pt },
+       bottom: 0.8pt,
+     )
+)
+
 // For improved equations support
 #import "@preview/equate:0.3.1": equate
 #show: equate.with()
