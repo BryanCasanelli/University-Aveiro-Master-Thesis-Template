@@ -23,8 +23,48 @@
   v(0.2cm)
 }
 
+// Improve headers spacing
+#show heading: it => {
+  if it.level != 1 {
+    v(0.9em)
+  }
+  it
+  if it.level != 1 {
+    v(0.6em)
+  }
+}
+
+// To number figures and equations based on the section number
+#show heading.where(level: 1): it => {
+  counter(math.equation).update(0)
+  counter(figure.where(kind: image)).update(0)
+  counter(figure.where(kind: table)).update(0)
+  counter(figure.where(kind: raw)).update(0)
+  it
+}
+#set math.equation(numbering: (..num) =>
+  numbering("(1.1)", counter(heading).get().first(), num.pos().first())
+)
+#set figure(numbering: (..num) =>
+  numbering("1.1", counter(heading).get().first(), num.pos().first())
+)
+
+// For improved equations support
+#import "@preview/equate:0.3.1": equate
+#show: equate.with()
+
 // For acronyms support
 #import "@preview/acrostiche:0.5.1": *
+#import "acronyms.typ": *
+#init-acronyms(acronyms)
+
+// Custom function to know when we are in a ToC or not
+#let in-outline = state("in-outline", false)
+#show outline: it => {
+  in-outline.update(true)
+  it
+  in-outline.update(false)
+}
 
 // --------------------------------------------------
 // First part
@@ -92,13 +132,12 @@
 #pagebreak()
 
 // Table of acronyms
-#import "acronyms.typ": *
-#init-acronyms(acronyms)
 #print-index(title: "List of Acronyms", delimiter: "", row-gutter: 5pt, used-only: true)
 #pagebreak()
 
 // Thesis content
 #include "second_part/01_about.typ"
+#pagebreak()
 #include "second_part/02_example.typ"
 
 // Bibliography

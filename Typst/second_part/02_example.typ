@@ -1,5 +1,4 @@
-#import "@preview/acrostiche:0.5.1": *
-#pagebreak()
+#import "../utils.typ": *
 
 = Example with Acronyms, Citations, Formulas, Tables and Images
 

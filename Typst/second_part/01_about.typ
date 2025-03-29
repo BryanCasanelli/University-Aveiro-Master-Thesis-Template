@@ -1,6 +1,8 @@
-= Template Information and Instructions
+#import "../utils.typ": *
 
-This Typst version was implemented in March 2025, based on the university's official Word template.
+= Template Information and #linebreak() Instructions
+
+This Typst version was implemented in March 2025, based on the University of Aveiro's official Word template. For the official guidelines, see: #link("https://www.ua.pt/pt/sga/page/12786")[www.ua.pt/pt/sga/page/12786].
 
 == Page Setup
 Following the original template specifications:
@@ -33,9 +35,12 @@ thesis/
 |   |-- ...             # Thesis sections
 |-- img/                # Images folder
 |-- acronyms.typ        # Acronyms definitions
+|-- utils.typ           # Utility functions
 |-- main.typ            # Main document
 +-- references.bib      # Bibliography
 ```
+
+#pagebreak()
 
 == Fonts
 The template uses the following free fonts:
@@ -43,11 +48,47 @@ The template uses the following free fonts:
 - Main content uses *Linux Libertine*, a free and elegant font family. According to the specifications, the body font is not restricted, so users can change it to their preferred font.
 
 == Adding Content
+
+=== Required Import
+At the beginning of each file, make sure to import utils.typ which provides support for acronyms, `flex-caption` and `no-num` functions:
+
+```typst
+#import "../utils.typ": *
+```
+
+- `flex-caption`: Allows different captions in document body vs. table of contents. Use when you need detailed captions but concise TOC entries.
+- `no-num`: Creates unnumbered equations for intermediate steps or secondary formulas that don't need references.
+
+
+
+=== Sections and Headings
+To create headings and sections use equals signs:
+
+```typst
+= Main Section (Level 1)
+== Subsection (Level 2)
+=== Sub-subsection (Level 3)
+==== Sub-sub-subsection (Level 4)
+```
+
+To reference a section, add a label after the heading and reference it later:
+
+```typst
+= Introduction <sec:intro>
+
+// Later in the document
+As mentioned in @sec:intro, the problem is complex.
+```
+
+For more information about headings, see: #link("https://typst.app/docs/reference/model/heading/")[typst.app/docs/reference/model/heading]
+
+=== First Part Pages
 *To modify first part pages:*
 1. Each page in the first part is contained in its own file in the `first_part/` directory.
 2. Edit the corresponding files to modify titles, names, and other content.
 3. Each file contains variables at the top that can be customized.
 
+=== Main Thesis Content
 *To add main thesis content:*
 1. Create new .typ files in the `second_part/` directory
 2. Follow a naming convention like `XX_section_name.typ` for organization
@@ -55,12 +96,196 @@ The template uses the following free fonts:
    ```typst
    #include "second_part/XX_section_name.typ"
    ```
-4. Update your main.typ file to include all sections in the desired order
+4. Add the following import at the beginning of each new file:
+  ```typst
+  #import "../utils.typ": *
+  ```
+5. Add the desired content to the new files.
 
-*To add acronyms:*
-1. Make sure to import the Acrostiche package at the beginning of your file:
+=== Images
+To add images to your document:
+
+1. Images must be added inside a figure:
    ```typst
-   #import "@preview/acrostiche:0.5.1": *
+   #figure(
+     image("img/my_image.png", width: 80%),
+     caption: flex-caption(
+       short: [Short caption for table of contents],
+       long: [Longer, more detailed caption for the document body],
+     ),
+   ) <fig:label>
+   ```
+
+2. To reference the figure elsewhere in the document:
+   ```typst
+   As shown in @fig:label, the results are significant.
+   ```
+
+For more information about figures, see: #link("https://typst.app/docs/reference/model/figure/")[typst.app/docs/reference/model/figure].
+
+For more information about images, see: #link("https://typst.app/docs/reference/visualize/image/")[typst.app/docs/reference/visualize/image].
+
+=== Tables
+To add tables to your document:
+
+1. Tables must be added inside a figure:
+   ```typst
+   #figure(
+     table(
+       columns: (auto, auto, auto),
+       inset: 10pt,
+       align: center,
+       [*Header 1*], [*Header 2*], [*Header 3*],
+       [Row 1, Col 1], [Row 1, Col 2], [Row 1, Col 3],
+       [Row 2, Col 1], [Row 2, Col 2], [Row 2, Col 3],
+     ),
+     caption: flex-caption(
+       short: [Short caption for list of tables],
+       long: [Longer, more detailed caption for the document body],
+     ),
+   ) <tab:label>
+   ```
+   
+#pagebreak()
+
+2. To reference the table elsewhere in the document:
+   ```typst
+   As shown in @tab:label, the data indicates...
+   ```
+
+For more information about figures, see: #link("https://typst.app/docs/reference/model/figure/")[typst.app/docs/reference/model/figure].
+
+For more information about tables, see: #link("https://typst.app/docs/reference/model/table/")[typst.app/docs/reference/model/table]
+
+=== Mathematical Equations
+Typst has support for mathematical formulas and equations. #underline[Note that Typst is a relatively new development and its equation handling may lack some features available in LaTeX].
+
+Equations in Typst always use a single dollar sign (`$`):
+
+=== Mathematical Equations
+*Note that Typst is a relatively new development and its equation handling may lack some features available in LaTeX.*
+
+Equations in Typst always use a single dollar sign (\$):
+
+1. For inline equations, use dollar signs without spaces:
+   ```typst
+   The formula $E = m c^2$ is well-known.
+   ```
+   This renders as: The formula $E = m c^2$ is well-known.
+
+2. For display equations (block-level), add spaces after the opening and before the closing dollar sign:
+   ```typst
+   $ E = m c^2 $
+   ```
+   This renders as:
+   $ E = m c^2 $
+   
+   While this syntax works, it's recommended to use the block format as shown in point 3.
+
+3. For multi-line display equations, structure as follows:
+   - Place a dollar sign (\$) alone on the first line
+   - Write each equation line, adding a backslash (\\) at the end of every line except the last one
+   - End with a dollar sign (\$) alone on the final line:
+   ```typst
+   $
+   E = m c^2 \
+   F = m a
+   $
+   ```
+   This renders as:
+   $
+   E = m c^2 \
+   F = m a
+   $
+
+#pagebreak()
+
+4. To create an unnumbered line in a block equation, add `#<equate:revoke>` at the end of the line:
+   ```typst
+   $
+   E = m c^2 #<equate:revoke> \
+   F = m a
+   $
+   ```
+   This renders as:
+   $
+   E = m c^2 #<equate:revoke> \
+   F = m a
+   $
+
+5. To label an equation for referencing, there are two methods:
+   
+   a. For single-line display equations, add the label after the closing dollar sign:
+   ```typst
+   $ F = m a $ <eq:newton>
+   
+   // Later reference it
+   As shown in @eq:newton, force equals mass times acceleration.
+   ```
+   
+   b. For multi-line equation blocks, add `#<eq:label>` at the end of the line within the equation block:
+   ```typst
+   $
+   F = m a #<eq:newton> \
+   E = m c^2
+   $
+   
+   // Later reference it
+   As shown in @eq:newton, force equals mass times acceleration.
+   ```
+
+7. To align multiple lines at the equals sign, use `&=`:
+   ```typst
+   $
+   E &= m c^2 \
+   E &= m c \cdot c \
+   E &= m v^2 (c/v)^2
+   $
+   ```
+   This renders as:
+   $
+   E &= m c^2 \
+   E &= m c \cdot c \
+   E &= m v^2 (c/v)^2
+   $
+
+8. For multi-letter variables or sequences of variables (like $E = m c^2$), separate them with spaces:
+   ```typst
+   $ E = m c^2 $   // Notice the spaces between m and c
+   ```
+   
+   Without proper spacing, adjacent variables are interpreted as a single multi-letter identifier rather than separate variables multiplied together.
+
+#pagebreak()
+   
+9. Example of a complex equation with the Fourier transform:
+   ```typst
+   $ F(omega) = integral_(- infinity)^(infinity) f(t) e^(- i omega t) d t $ <eq:fourier>
+   ```
+   This renders as:
+   $ F(omega) = integral_(- infinity)^(infinity) f(t) e^(- i omega t) d t $ <eq:fourier>
+
+10. Example of a system of equations with alignment:
+    ```typst
+    $
+    a_1 x + b_1 y &= c_1 \
+    a_2 x + b_2 y &= c_2
+    $
+    ```
+    This renders as:
+    $
+    a_1 x + b_1 y &= c_1 \
+    a_2 x + b_2 y &= c_2
+    $
+
+For comprehensive information on writing equations, refer to: #link("https://typst.app/docs/reference/math/")[typst.app/docs/reference/math].
+
+For a complete list of available mathematical symbols, refer to: #link("https://typst.app/docs/reference/symbols/sym/")[typst.app/docs/reference/symbols/sym].
+
+=== Acronyms
+1. Make sure to import the utils.typ file at the beginning of your file:
+   ```typst
+   #import "../utils.typ": *
    ```
 
 2. Open `acronyms.typ`
@@ -82,7 +307,7 @@ The template uses the following free fonts:
    - `#reset-acronym("SDA")` - Resets a single acronym so the next usage will include its definition again.
    - `#reset-all-acronyms()` - Resets all acronyms so the next usage will include their definitions again.
 
-*To add bibliography entries:*
+=== Bibliography
 1. Open `references.bib`
 2. Add entries in BibTeX format:
    ```bibtex
@@ -125,16 +350,6 @@ The template uses the following free fonts:
     #let pantone-color = engineering
     ```
     where the color can be: artscomm, sciences, education, accounting1, accounting2, economics, engineering, languages, or health.
-
-- *Mathematical Equations:*
-  - Typst has robust support for typesetting mathematical formulas and equations.
-  - For comprehensive information on writing equations, refer to: #link("https://typst.app/docs/reference/math/")[typst.app/docs/reference/math]
-  - For a complete list of available mathematical symbols, refer to: #link("https://typst.app/docs/reference/symbols/sym/")[typst.app/docs/reference/symbols/sym]
-  - Example of an equation in Typst:
-    ```typst
-    $ F(x) = integral_(- infinity)^(infinity) f(t) e^(-2 pi i t x) dif t $
-    ```
-    $ F(x) = integral_(- infinity)^(infinity) f(t) e^(-2 pi i t x) dif t $
 
 == Note
 This implementation was originally designed for engineering theses; minor adjustments might be needed for other fields.
