@@ -161,4 +161,4 @@
 
 // Bibliography
 #pagebreak()
-#bibliography("references.bib", title: "References", style: "american-physics-society")
+#bibliography("references.bib", title: "References", style: "the-institution-of-engineering-and-technology")

@@ -336,7 +336,7 @@ For a complete list of available mathematical symbols, refer to: #link("https://
   - List of acronyms
 
 - *Bibliography Management:*
-  - Default citation style: american-physics-society
+  - Default citation style: the-institution-of-engineering-and-technology
   - To change the citation style, modify the style parameter in the bibliography function in `main.typ`:
     ```typst
     #bibliography("references.bib", title: "References", style: "your-style")
