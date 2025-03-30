@@ -63,6 +63,11 @@
      )
 )
 
+// Improve figures caption
+#show figure.caption: it => {
+  align(box(align(it, left)), center)
+}
+
 // For improved equations support
 #import "@preview/equate:0.3.1": equate
 #show: equate.with()
