@@ -40,8 +40,6 @@ thesis/
 +-- references.bib      # Bibliography
 ```
 
-#pagebreak()
-
 == Fonts
 The template uses the following free fonts:
 - First pages use *TeX Gyre Heros*, a free alternative to Helvetica. While the original template specifies Helvetica, it is a proprietary font that each user would need to purchase. TeX Gyre Heros, based on Nimbus Sans, provides a visually similar open-source alternative.
@@ -145,8 +143,7 @@ To add tables to your document:
      ),
    ) <tab:label>
    ```
-   
-#pagebreak()
+  
 
 2. To reference the table elsewhere in the document:
    ```typst
@@ -156,11 +153,6 @@ To add tables to your document:
 For more information about figures, see: #link("https://typst.app/docs/reference/model/figure/")[typst.app/docs/reference/model/figure].
 
 For more information about tables, see: #link("https://typst.app/docs/reference/model/table/")[typst.app/docs/reference/model/table]
-
-=== Mathematical Equations
-Typst has support for mathematical formulas and equations. #underline[Note that Typst is a relatively new development and its equation handling may lack some features available in LaTeX].
-
-Equations in Typst always use a single dollar sign (`$`):
 
 === Mathematical Equations
 *Note that Typst is a relatively new development and its equation handling may lack some features available in LaTeX.*
@@ -198,7 +190,6 @@ Equations in Typst always use a single dollar sign (\$):
    F = m a
    $
 
-#pagebreak()
 
 4. To create an unnumbered line in a block equation, add `#<equate:revoke>` at the end of the line:
    ```typst
@@ -245,7 +236,7 @@ Equations in Typst always use a single dollar sign (\$):
    This renders as:
    $
    E &= m c^2 \
-   E &= m c \cdot c \
+   E &= m c dot c \
    E &= m v^2 (c/v)^2
    $
 
@@ -255,8 +246,6 @@ Equations in Typst always use a single dollar sign (\$):
    ```
    
    Without proper spacing, adjacent variables are interpreted as a single multi-letter identifier rather than separate variables multiplied together.
-
-#pagebreak()
    
 9. Example of a complex equation with the Fourier transform:
    ```typst

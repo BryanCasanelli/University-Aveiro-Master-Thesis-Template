@@ -25,12 +25,14 @@
 
 // Improve headers spacing
 #show heading: it => {
-  if it.level != 1 {
-    v(0.9em)
-  }
-  it
-  if it.level != 1 {
-    v(0.6em)
+  if it.level == 1 {
+    it
+  } else {
+    block(
+      above: 1.5em,
+      below: 1em,
+      it
+    )
   }
 }
 

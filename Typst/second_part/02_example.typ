@@ -44,7 +44,7 @@ $ "ReLU"(x) = max(0, x) $
 
 The backpropagation algorithm uses the chain rule for computing gradients:
 
-$ frac(partial L, partial w_(i j)) = frac(partial L, partial y_j) frac(partial y_j, partial w_(i j)) $
+$ frac(diff L, diff w_(i j)) = frac(diff L, diff y_j) frac(diff y_j, diff w_(i j)) $
 
 == Tables
 
