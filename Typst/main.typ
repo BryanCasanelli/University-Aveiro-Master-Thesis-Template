@@ -170,9 +170,8 @@
 
 // Change "Section" by "Appendix"
 #set heading(
-  level: 1,
-  numbering: num => [Appendix #numbering("A", num).],
-  supplement: none
+  numbering: ("A.1."),
+  supplement: "Appendix"
 )
 
 // Configure heading again, but with "Appendix"
