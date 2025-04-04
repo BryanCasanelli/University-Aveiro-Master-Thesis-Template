@@ -175,6 +175,23 @@
   supplement: none
 )
 
+// Configure heading again, but with "Appendix"
+#show heading.where(level: 1): it => {
+  set align(center)
+  set text(size: 24pt, weight: "bold")
+  [
+    Appendix
+    #if it.numbering != none {
+       counter(heading).display()
+      [ ]
+    }
+    #it.body
+  ]
+  v(-0.7cm)
+  line(length: 100%, stroke: 1pt)
+  v(0.2cm)
+}
+
 // To number figures and equations based on the appendix letter
 #set math.equation(numbering: (..num) =>
   numbering("(A.1)", counter(heading).get().first(), num.pos().first())
@@ -189,5 +206,23 @@
 // --------------------------------------------------
 // Bibliography
 // --------------------------------------------------
+
+// Configure heading again, but without "Appendix"
+#show heading.where(level: 1): it => {
+  set align(center)
+  set text(size: 24pt, weight: "bold")
+  [
+    #if it.numbering != none {
+       counter(heading).display()
+      [ ]
+    }
+    #it.body
+  ]
+  v(-0.7cm)
+  line(length: 100%, stroke: 1pt)
+  v(0.2cm)
+}
+
+// Bibliography
 #pagebreak()
 #bibliography("references.bib", title: "References", style: "the-institution-of-engineering-and-technology")
