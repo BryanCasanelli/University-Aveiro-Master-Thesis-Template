@@ -163,7 +163,7 @@
 
 // Appendix
 #counter(heading).update(0)
-#set heading(numbering: num => [Appendix #numbering("A", num).])
+#set heading(numbering: num => [Appendix #numbering("A", num).], supplement: none)
 // Add your appendices here
 
 // Bibliography
