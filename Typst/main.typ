@@ -161,11 +161,33 @@
 #pagebreak()
 #include "second_part/02_example.typ"
 
+// --------------------------------------------------
 // Appendix
+// --------------------------------------------------
+
+// Reset section counter
 #counter(heading).update(0)
-#set heading(numbering: num => [Appendix #numbering("A", num).], supplement: none)
+
+// Change "Section" by "Appendix"
+#set heading(
+  level: 1,
+  numbering: num => [Appendix #numbering("A", num).],
+  supplement: none
+)
+
+// To number figures and equations based on the appendix letter
+#set math.equation(numbering: (..num) =>
+  numbering("(A.1)", counter(heading).get().first(), num.pos().first())
+)
+#set figure(numbering: (..num) =>
+  numbering("A.1", counter(heading).get().first(), num.pos().first())
+)
+
 // Add your appendices here
 
+
+// --------------------------------------------------
 // Bibliography
+// --------------------------------------------------
 #pagebreak()
 #bibliography("references.bib", title: "References", style: "the-institution-of-engineering-and-technology")
