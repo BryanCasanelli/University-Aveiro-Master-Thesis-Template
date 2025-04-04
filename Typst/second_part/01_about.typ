@@ -100,6 +100,12 @@ For more information about headings, see: #link("https://typst.app/docs/referenc
   ```
 5. Add the desired content to the new files.
 
+#pagebreak()
+=== Appendices
+*To add appendices:*
+1. Appendices can be added after the "`// Add your appendices here`" comment within the `main.typ` file.
+2. They are imported in the same manner as the main thesis content, typically by creating `.typ` files for each appendix and using `#include` statements in `main.typ`.
+
 === Images
 To add images to your document:
 

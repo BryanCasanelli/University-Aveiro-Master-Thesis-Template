@@ -161,6 +161,11 @@
 #pagebreak()
 #include "second_part/02_example.typ"
 
+// Appendix
+#counter(heading).update(0)
+#set heading(numbering: num => [Appendix #numbering("A", num).])
+// Add your appendices here
+
 // Bibliography
 #pagebreak()
 #bibliography("references.bib", title: "References", style: "the-institution-of-engineering-and-technology")
