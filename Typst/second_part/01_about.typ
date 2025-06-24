@@ -48,14 +48,16 @@ The template uses the following free fonts:
 == Adding Content
 
 === Required Import
-At the beginning of each file, make sure to import utils.typ which provides support for acronyms, `flex-caption` and `no-num` functions:
+At the beginning of each file, make sure to import utils.typ which provides support for acronyms and utility functions:
 
 ```typst
 #import "../utils.typ": *
 ```
 
+The utils.typ file includes several helpful functions:
 - `flex-caption`: Allows different captions in document body vs. table of contents. Use when you need detailed captions but concise TOC entries.
-- `no-num`: Creates unnumbered equations for intermediate steps or secondary formulas that don't need references.
+- `review`: Creates highlighted blocks for review comments and notes.
+- `code`: Creates formatted code blocks with consistent styling.
 
 
 
@@ -301,6 +303,46 @@ For a complete list of available mathematical symbols, refer to: #link("https://
    - `#acrfullp("SDA")` - Displays the full plural version of the acronym without affecting the state or tracking its usage.
    - `#reset-acronym("SDA")` - Resets a single acronym so the next usage will include its definition again.
    - `#reset-all-acronyms()` - Resets all acronyms so the next usage will include their definitions again.
+
+=== Review and Code Utilities
+
+The template includes two utility functions to help with writing and formatting:
+
+==== Review Function
+Use the `review` function to create highlighted blocks for comments, notes, and sections that need attention. This is particularly useful for highlighting content that should be reviewed by your thesis supervisor:
+
+```typst
+#review[This section needs to be reviewed and expanded.]
+
+#review(note: "Check references")[
+  Add more citations to support this argument.
+]
+```
+
+The `review` function accepts:
+- Main content (required): The text to highlight
+- `note` parameter (optional): Additional note to display below the main content
+
+==== Code Function  
+Use the `code` function to create formatted code blocks with consistent styling:
+
+```typst
+#code[
+```python
+def calculate_average(numbers):
+    return sum(numbers) / len(numbers)
+```
+]
+
+#code[
+```javascript
+const greeting = "Hello, World!";
+console.log(greeting);
+```
+]
+```
+
+Both functions provide consistent formatting throughout your thesis and make it easy to identify areas that need attention or to display code examples clearly.
 
 === Bibliography
 1. Open `references.bib`

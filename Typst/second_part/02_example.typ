@@ -88,3 +88,50 @@ $ h_i = sigma(sum_(j=1)^m w_(i j) dot x_j + b_i) $
 Where $sigma$ is the activation function, as shown in the table @table-ml-algorithms.
 
 The field of #acr("NLP") has seen significant advancements through the application of deep learning methods @davis2021. Several #acrpl("CNN") described in the literature @smith2023 have demonstrated superior performance in text classification tasks, as visualized in @fig-architecture.
+
+== Utility Functions Examples
+
+=== Review Function Usage
+
+The `review` function is useful for highlighting sections that need attention or adding editorial comments. It's especially helpful for marking content that should be reviewed by your thesis supervisor:
+
+#review[This paragraph contains preliminary results that need to be verified with additional experiments.]
+
+#review(note: "Verify with supervisor")[
+  The methodology described here should be validated before final submission. Consider adding more detail about the data collection process.
+]
+
+=== Code Function Usage  
+
+The `code` function provides consistent formatting for code snippets throughout your thesis:
+
+#code[
+```python
+# Example of a simple neural network implementation
+import numpy as np
+
+def sigmoid(x):
+    return 1 / (1 + np.exp(-x))
+
+def forward_pass(X, weights, bias):
+    return sigmoid(np.dot(X, weights) + bias)
+```
+]
+
+You can also use it for other programming languages:
+
+#code[
+```javascript
+// Example of data processing in JavaScript
+function processData(dataset) {
+    return dataset
+        .filter(item => item.isValid)
+        .map(item => ({
+            id: item.id,
+            value: item.value * 2
+        }));
+}
+```
+]
+
+These utility functions help maintain consistent formatting and make it easier to identify sections that require attention during the writing and review process.
