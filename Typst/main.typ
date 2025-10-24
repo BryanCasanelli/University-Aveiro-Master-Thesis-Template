@@ -107,9 +107,17 @@
   )
 )
 
-// Pages
+// Reset page counter
+#counter(page).update(1)
+
+// Pages 1-2: Cover and Title
 #include "first_part/01_cover.typ"
 #include "first_part/02_title.typ"
+
+// Enable roman numbering
+#set page(numbering: "I", number-align: right)
+
+// Pages 3-7: Preliminary pages
 #include "first_part/03_jury.typ"
 #include "first_part/04_acknowledgements.typ"
 #include "first_part/05_abstract_pt.typ"
@@ -133,10 +141,6 @@
 // Set english as language
 #set text(lang: "en")
 
-// Enable numbering
-#set page(numbering: "1", number-align: right)
-#counter(page).update(1)
-
 // Margins
 #set page(margin: (left: 3cm, right: 2.5cm, top: 3cm, bottom: 3cm))
 
@@ -155,6 +159,10 @@
 // Table of acronyms
 #print-index(title: "List of Acronyms", delimiter: "", row-gutter: 5pt, used-only: true)
 #pagebreak()
+
+// Switch to arabic numbering and reset counter
+#set page(numbering: "1", number-align: right)
+#counter(page).update(1)
 
 // Thesis content
 #include "second_part/01_about.typ"
